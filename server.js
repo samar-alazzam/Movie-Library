@@ -6,9 +6,8 @@ const movieData = require("./data.json")
 const port = 3000;
 
 // routes
-app.get("/test", handleHomePage);
+app.get("/", handleHomePage);
 app.get("/favoritePage" , handleFavoritePage);
-app.get("/home" , handelMovie);
 app.get("*", handleNotFound);
 
 
@@ -17,17 +16,14 @@ function handleFavoritePage(req , res)
 {
   res.send("welcome to favorite page");
 }
-function handelMovie(req , res)
+function handleHomePage(req , res)
 {
   let newMovie = new Movie(movieData.title , movieData.poster_path , movieData.overview);
   res.json(newMovie);
 }
 
 
-function handleHomePage(req , res)
-{
-  res.send(" testing ");
-}
+
 
 function handleNotFound(req , res) 
 {
@@ -45,7 +41,4 @@ function Movie (title , poster_path , overview)
   this.overview = overview;
 }
 
-// //function handleRecipes(req , res)
-// {
-//     res.JSON(recipeData);
-// }
+
