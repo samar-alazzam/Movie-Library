@@ -24,7 +24,6 @@ function handleHomePage(req , res)
 
 
 
-
 function handleNotFound(req , res) 
 {
   res.status(404).send("Not Found");
@@ -40,5 +39,6 @@ function Movie (title , poster_path , overview)
   this.poster_path = poster_path;
   this.overview = overview;
 }
+
 
 
