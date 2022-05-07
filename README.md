@@ -4,6 +4,7 @@
 **Author Name**: Samar alazzam
 
 ## WRRC
+![](./WRRC1.png)
 ![](./WRRC.png)
 
 ## Overview
@@ -14,6 +15,8 @@
 * create an "server.js" name is optional
 * install express package to use it
 * run the server using "node server.js" 
+* install axios dotenv
+* build two routes /trending and /search
 
 
 
