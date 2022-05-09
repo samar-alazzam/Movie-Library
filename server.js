@@ -7,6 +7,7 @@ const axios=require('axios').default;
 const movieData = require("./data.json");
 const bodyParser = require('body-parser');
 const { Client } = require('pg');
+const { query } = require('express');
 const client = new Client(url);
 const port = 3000;
 
@@ -25,6 +26,9 @@ app.get("/trending" , handleTrending);
 app.get("/search" , handleSearch);
 app.post("/addMovie", handleAdd);
 app.get("/getMovies", handleGet );
+app.put("/UPDATE" , handleUpdate);
+app.delete("/deleteMovie" , handleDelete);
+app.get("/getMOVIE" , handleGetMovie);
 app.get("*", handleNotFound);
 
 
@@ -66,9 +70,9 @@ function handleSearch(req , res){
 function handleAdd(req , res){
   console.log(req.body);
   //res.send("adding to database in progress");
-  const { title, overview , poster_path} = req.body;
-  let sql = 'INSERT INTO movie (title, overview , poster_path) VALUES ($1 , $2 , $3) RETURNING * ;'
-  let values =[ title, overview , poster_path];
+  const {id, title, overview , poster_path} = req.body;
+  let sql = 'INSERT INTO movie (id , title, overview , poster_path) VALUES ($1 , $2 , $3 , $4) RETURNING * ;'
+  let values =[ id ,title, overview , poster_path];
 
   client.query(sql , values).then((result)=>{
     console.log(result);
@@ -87,6 +91,41 @@ function handleGet(req , res){
 
   }).catch();
 
+}
+
+
+function handleUpdate(req , res) {
+  const Id = req.query.Id;
+  const {id , title , overview , poster_path}= req.body;
+  let sql = 'UPDATE movie SET id=$1 , title=$2 , overview=$3 , poster_path=$4 WHERE id=$5 RETURNING * ;'
+  let values = [id , title , overview , poster_path , Id];
+  client.query(sql , values).then(result =>{
+    console.log(result);
+    //res.send("working");
+    res.json(result.rows[0]);
+
+  }).catch();
+}
+
+function handleDelete(req , res){
+  const {Id} = req.query;
+  console.log(Id);
+  let sql = 'DELETE FROM movie WHERE id=$1 ;'
+  let value=[Id];
+  client.query(sql , value).then(result =>{
+    console.log(result);
+    res.send("deleted");
+  })
+}
+
+function handleGetMovie(req , res){
+  let sql = 'SELECT * FROM movie;'
+  client.query(sql).then(result =>{
+    console.log(result);
+    res.json(result.rows);
+
+  }).catch();
+    
 }
 
 
