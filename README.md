@@ -6,6 +6,7 @@
 ## WRRC
 ![](./WRRC1.png)
 ![](./WRRC.png)
+![](./WRRC3.png)
 
 ## Overview
 
@@ -17,6 +18,8 @@
 * run the server using "node server.js" 
 * install axios dotenv
 * build two routes /trending and /search
+* build two routes / addMovie and getMovies
+* install package pg
 
 
 
