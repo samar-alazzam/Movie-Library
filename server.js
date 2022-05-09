@@ -92,8 +92,6 @@ function handleGet(req , res){
   }).catch();
 
 }
-
-
 function handleUpdate(req , res) {
   const Id = req.query.Id;
   const {id , title , overview , poster_path}= req.body;
@@ -106,7 +104,6 @@ function handleUpdate(req , res) {
 
   }).catch();
 }
-
 function handleDelete(req , res){
   const {Id} = req.query;
   console.log(Id);
@@ -127,6 +124,9 @@ function handleGetMovie(req , res){
   }).catch();
     
 }
+
+
+
 
 
 
