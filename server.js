@@ -1,7 +1,7 @@
 'use strict';
 const express = require('express');
 const res = require('express/lib/response');
-const app = express()
+const app = express();
 const axios=require('axios').default;
 const movieData = require("./data.json")
 const port = 3000;
@@ -57,7 +57,7 @@ function handleNotFound(req , res)
 }
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
 })
 
 function Movie (title , poster_path , overview)
