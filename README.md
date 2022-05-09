@@ -7,6 +7,7 @@
 ![](./WRRC1.png)
 ![](./WRRC.png)
 ![](./WRRC3.png)
+![](./update.png)
 
 ## Overview
 
@@ -20,6 +21,7 @@
 * build two routes /trending and /search
 * build two routes / addMovie and getMovies
 * install package pg
+* build three routes / update and delete and get
 
 
 
