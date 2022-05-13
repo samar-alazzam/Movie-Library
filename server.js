@@ -8,7 +8,16 @@ const movieData = require("./data.json");
 const bodyParser = require('body-parser');
 const { Client } = require('pg');
 const { query } = require('express');
-const client = new Client(url);
+//const client = new Client(url);
+
+const client = new pg.Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
+
+
+
+
 const port = 3000;
 
 
